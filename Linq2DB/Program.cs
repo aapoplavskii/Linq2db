@@ -6,7 +6,9 @@ namespace Linq2DB
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
+
+
         }
     }
 }
