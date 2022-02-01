@@ -1,0 +1,35 @@
+CREATE TABLE Course
+(
+    ID bigint NOT NULL,
+    Name character varying(255) NOT NULL,
+    CONSTRAINT Course_pkey PRIMARY KEY (ID)
+);
+CREATE TABLE Student
+(
+    ID bigint NOT NULL,
+    FIO character varying(255) NOT NULL,
+	Age bigint,
+    CONSTRAINT Student_pkey PRIMARY KEY (ID)
+);
+
+CREATE TABLE StudentCourse
+(
+    ID bigint NOT NULL,
+    StudentID bigint NOT NULL,
+    CourseID bigint NOT NULL,
+    CONSTRAINT StudentCourse_pkey PRIMARY KEY (ID),
+	CONSTRAINT StudentCourse_fkey_student FOREIGN KEY (StudentID) REFERENCES Student (ID),
+	CONSTRAINT StudentCourse_fkey_course FOREIGN KEY (CourseID) REFERENCES Course (ID)
+);
+
+INSERT INTO Course (name) VALUES ('C#');
+INSERT INTO Course (name) VALUES ('JAVA');
+INSERT INTO Course (name) VALUES ('JS');
+INSERT INTO Course (name) VALUES ('HTML/CSS');
+
+INSERT INTO Student (FIO, Age) VALUES ('Иванов', 25);
+INSERT INTO Student (FIO, Age) VALUES ('Петров', 29);
+INSERT INTO Student (FIO, Age) VALUES ('Васечкин', 35);
+
+
+
