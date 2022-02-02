@@ -15,5 +15,10 @@ namespace DZ_OTUS.Entities
 
         public Course() { }
 
+        public override string ToString()
+        {
+            return name;
+        }
+
     }
 }

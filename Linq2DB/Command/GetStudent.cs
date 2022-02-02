@@ -14,9 +14,7 @@ namespace DZ_OTUS.Command
         {
             List<Student> students = new List<Student>();
 
-            DataConnection db = Linq2DB.Config.db;
-
-            using (db)
+            using (var db = new DataConnection(LinqToDB.ProviderName.PostgreSQL, Linq2DB.Config.SqlConnectionString))
             {
                 var table = db.GetTable<Student>();
 
@@ -30,9 +28,7 @@ namespace DZ_OTUS.Command
         {
             List<Student> students = new List<Student>();
 
-            DataConnection db = Linq2DB.Config.db;
-
-            using (db)
+            using (var db = new DataConnection(LinqToDB.ProviderName.PostgreSQL, Linq2DB.Config.SqlConnectionString))
             {
                 var table = db.GetTable<Student>().Where(x => x.FIO.Contains(fio));
 
@@ -46,16 +42,27 @@ namespace DZ_OTUS.Command
         {
             List<Student> students = new List<Student>();
 
-            DataConnection db = Linq2DB.Config.db;
-
-            using (db)
+            using (var db = new DataConnection(LinqToDB.ProviderName.PostgreSQL, Linq2DB.Config.SqlConnectionString))
             {
-                var table = db.GetTable<Student>().Where(x => x.Age >= age);
+                var table = db.GetTable<Student>().Where(x => x.Age < age);
 
                 students = table.ToList();
 
             }
             return students;
+        }
+
+        public static Student FindItem(int id)
+        {
+            Student student = null;
+
+
+            using (var db = new DataConnection(LinqToDB.ProviderName.PostgreSQL, Linq2DB.Config.SqlConnectionString))
+            {
+                student = db.GetTable<Student>().FirstOrDefault(x => x.Id == id);
+
+            }
+            return student;
         }
     }
 }

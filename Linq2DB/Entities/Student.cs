@@ -18,5 +18,10 @@ namespace DZ_OTUS.Entities
 
         public Student() { }
 
+        public override string ToString()
+        {
+            return $"{FIO} - {Age}";
+        }
+
     }
 }
