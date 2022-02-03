@@ -29,7 +29,7 @@ namespace Linq2DB
                 var course = GetCourse.FindItem(item.CourseID);
                 var student = GetStudent.FindItem(item.StudentID);
 
-                Console.WriteLine($"{student} - {course}");
+                Console.WriteLine($"{student} - {course} (id записи - {item.Id})");
             
             }
         }

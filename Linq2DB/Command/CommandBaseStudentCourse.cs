@@ -39,7 +39,7 @@ namespace DZ_OTUS.Command
                             on studentcourse.StudentID equals student.Id
                             join course in db.GetTable<Course>()
                             on studentcourse.CourseID equals course.Id
-                            where student.Age < v2 && course.name.Contains(v1)
+                            where student.Age < v2 & course.name.Contains(v1)
                             select studentcourse;
 
 
